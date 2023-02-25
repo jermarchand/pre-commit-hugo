@@ -1,0 +1,57 @@
+= Pre-commit-hugo
+
+A basic pre-commit hook to check https://gohugo.io/content-management/front-matter/[front-matter].
+
+The hook check that are set values for:
+
+* `title`
+* `summary` or `description`
+* `date`
+* minimum 2 `tags`
+
+## Using the pre-commit hook
+
+Install the pre-commit framework, and add the following to the .pre-commit-config.yaml file:
+
+
+[source,yaml]
+--
+- repo: https://github.com/jermarchand/pre-commit-hugo
+  rev: main
+  hooks:
+   - id: check-front-matter
+--
+
+## Options
+
+You can configure this hook with the following commandline options:
+
+* `--base_path=<path>` : Set base path for files to check
+* `--exclude_file=<python regexp>` : Files to exclude
+* `--ignore_title` : Do not check title
+* `--ignore_summary_and_description` : Do not check summary and description
+* `--ignore_date` : Do not check date
+* `--ignore_tags` : Do not check tags
+* `--minimum_tags=<int>` : Minimum number of tags (default: 2)
+
+The `--ignore_tags` option also disable `--minimum_tags=<int>`.
+
+
+## Example
+
+[source,yaml]
+--
+- repo: https://github.com/jermarchand/pre-commit-hugo
+  hooks:
+    - id: check-hugo
+      name: Check hugo
+      args:
+        - --base_path=doc/content/
+        - --exclude_file=archetypes/.*
+        - --exclude_file=themes/.*
+        - --ignore_title
+        - --ignore_summary_and_description
+        - --ignore_date
+        - --ignore_tags
+        - --minimum_tags=1
+--

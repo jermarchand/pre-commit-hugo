@@ -1,0 +1,7 @@
+---
+- id: check-front-matter
+  name: Check Hugo
+  description: Check Hugo
+  entry: check-front-matter
+  language: python
+  types_or: [asciidoc, markdown]
