@@ -1,7 +1,7 @@
 ---
 - id: check-front-matter
-  name: Check Hugo
-  description: Check Hugo
+  name: Check Hugo front-matter
+  description: A basic pre-commit hook to check https://gohugo.io/content-management/front-matter/[front-matter].
   entry: check-front-matter
   language: python
   types_or: [asciidoc, markdown]
